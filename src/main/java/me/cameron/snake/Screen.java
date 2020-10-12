@@ -18,6 +18,7 @@ import javax.swing.Timer;
 import me.cameron.snake.objects.Apple;
 import me.cameron.snake.objects.Snake;
 import me.cameron.snake.objects.Wall;
+import me.cameron.snake.utils.Utils;
 import me.cameron.snake.utils.meta.GameObject;
 import me.cameron.snake.utils.meta.Keyable;
 
@@ -34,6 +35,8 @@ public class Screen extends JPanel implements ActionListener {
 	private int gridSize = 50;
 	double agsx;
 	double agsy;
+
+	int level = -1;
 
 	public List<GameObject> objects = new ArrayList<>();
 	public List<GameObject> objects__remove = new ArrayList<>();
@@ -65,6 +68,12 @@ public class Screen extends JPanel implements ActionListener {
 			objects.add(new Wall(i, gridSize));
 			objects.add(new Wall(0, i));
 			objects.add(new Wall(gridSize, i));
+		}
+
+		if (level == -1) {
+			for(GameObject o : Utils.loadLevel("menu")) {
+				objects.add(o);
+			}
 		}
 
 		objects.add(new Apple(new Random().nextInt(gridSize - 1), new Random().nextInt(gridSize - 1)));
@@ -125,8 +134,6 @@ public class Screen extends JPanel implements ActionListener {
 		g.dispose();
 
 	}
-
-	
 
 	private void reset() {
 	}

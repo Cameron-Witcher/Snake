@@ -1,10 +1,13 @@
 package me.cameron.snake.utils;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 import me.cameron.snake.Main;
-import me.cameron.snake.objects.Apple;
 import me.cameron.snake.objects.Snake;
+import me.cameron.snake.objects.Wall;
 import me.cameron.snake.utils.meta.GameObject;
 
 public class Utils {
@@ -34,6 +37,20 @@ public class Utils {
 	
 	public static Color generateColor(int seed, double frequency) {
 		return generateColor(seed, frequency, 0);
+	}
+	public static List<GameObject> loadLevel(String level){
+		List<GameObject> objects = new ArrayList<>();
+		BufferedImage img = ImageUtils.toBufferedImage(ImageUtils.getImage("images/" + level + ".png"));
+		Main.getWindow().getScreen().setGridSize(img.getWidth());
+		for(int x=0;x!=img.getWidth();x++) {
+			for(int y=0;y!=img.getHeight();y++) {
+				if(img.getRGB(x, y) == Color.decode("#5B5B5B").getRGB()) {
+					objects.add(new Wall(x,y));
+				}
+			}
+		}
+		
+		return objects;
 	}
 
 	public static Color generateColor(int seed, double frequency, double shift) {
