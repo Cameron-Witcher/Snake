@@ -1,5 +1,6 @@
 package me.cameron.snake.objects;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import me.cameron.snake.utils.Utils;
@@ -16,6 +17,7 @@ public class Apple implements Food {
 	}
 	
 	public void draw(Graphics g) {
+		g.setColor(Color.RED);
 		g.fillOval(x*Utils.getAGSX(), y*Utils.getAGSY(), Utils.getAGSX(), Utils.getAGSY());
 	}
 	

@@ -86,12 +86,12 @@ public class Screen extends JPanel implements ActionListener {
 //		g.fillRect(0, 0, getWidth(), getHeight());
 		agsx = Math.ceil(Main.getWindow().getWidth() / getGridSize()-1);
 		agsy = Math.ceil(Main.getWindow().getHeight() / getGridSize())-1;
-//		for (int i = 0; !(i >= Main.getWindow().getWidth() / agsx); i++) {
-//			for (int j = 0; !(j >= Main.getWindow().getHeight() / agsy); j++) {
-//				g.setColor(generateColor(i + j, 0.1));
-//				g.fillRect((int) (i * agsx), (int) (j * agsy), (int) agsx, (int) agsy);
-//			}
-//		}
+		for (int i = 0; !(i >= Main.getWindow().getWidth() / agsx); i++) {
+			for (int j = 0; !(j >= Main.getWindow().getHeight() / agsy); j++) {
+				g.setColor(generateColor(i + j, 0.1));
+				g.fillRect((int) (i * agsx), (int) (j * agsy), (int) agsx, (int) agsy);
+			}
+		}
 		
 		for(GameObject object : objects__remove) {
 			objects.remove(object);
