@@ -1,5 +1,7 @@
 package me.cameron.snake.utils;
 
+import java.awt.Color;
+
 import me.cameron.snake.Main;
 import me.cameron.snake.objects.Apple;
 import me.cameron.snake.objects.Snake;
@@ -29,5 +31,27 @@ public class Utils {
 	public static void removeObject(GameObject object) {
 		Main.getWindow().getScreen().objects__remove.add(object);
 	}
+	
+	public static Color generateColor(int seed, double frequency) {
+		return generateColor(seed, frequency, 0);
+	}
 
+	public static Color generateColor(int seed, double frequency, double shift) {
+
+		int amp = 100;
+		if (amp > 127)
+			amp = 127;
+		int peak = 255 - amp;
+		int red = (int) (Math.sin(frequency * (seed + shift) + 0) * amp + peak);
+		int green = (int) (Math.sin(frequency * (seed + shift) + 2 * Math.PI / 3) * amp + peak);
+		int blue = (int) (Math.sin(frequency * (seed + shift) + 4 * Math.PI / 3) * amp + peak);
+		if (red > 255)
+			red = 255;
+		if (green > 255)
+			green = 255;
+		if (blue > 255)
+			blue = 255;
+
+		return new Color(red, green, blue);
+	}
 }

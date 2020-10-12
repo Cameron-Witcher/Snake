@@ -63,9 +63,12 @@ public class Snake implements Keyable {
 
 	public void draw(Graphics g) {
 		g.setColor(alive ? Color.GREEN : Color.RED);
-		for(Point p : mem)
+		for(Point p : mem) {
+			g.setColor(Utils.generateColor(mem.indexOf(p), 0.03));
 			g.fillRect((int) ((p.x * Utils.getAGSX())), (int) ((p.y * Utils.getAGSY())), (int) Utils.getAGSX(),
 					(int) Utils.getAGSY());
+		}
+		g.setColor(Utils.generateColor(mem.size(), 0.03));
 		g.fillRect((int) ((x * Utils.getAGSX())), (int) ((y * Utils.getAGSY())), (int) Utils.getAGSX(),
 				(int) Utils.getAGSY());
 	}
