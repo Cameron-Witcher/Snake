@@ -72,11 +72,11 @@ public class Screen extends JPanel implements ActionListener {
 			objects.add(new Wall(gridSize, i));
 		}
 
-		if (level == -1) {
-			for(GameObject o : Utils.loadLevel("menu")) {
-				objects.add(o);
-			}
-		}
+//		if (level == -1) {
+//			for(GameObject o : Utils.loadLevel("menu")) {
+//				objects.add(o);
+//			}
+//		}
 
 		objects.add(new Apple(new Random().nextInt(gridSize - 1), new Random().nextInt(gridSize - 1)));
 	}
