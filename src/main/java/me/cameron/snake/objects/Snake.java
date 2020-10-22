@@ -21,6 +21,10 @@ public class Snake implements Keyable {
 	int dx = 0;
 	int dy = 0;
 	
+	double f = 0.5;
+	
+	boolean moved = false;
+	
 	LinkedList<Point> mem = new LinkedList<>();
 
 	boolean alive = true;
@@ -31,12 +35,14 @@ public class Snake implements Keyable {
 	}
 
 	public void update() {
+		f = 0.5;
 		if (alive) {
 			mem.add(new Point(x,y));
 			if(mem.size()>length)
 				mem.removeFirst();
 			x = x + dx;
 			y = y + dy;
+			moved = false;
 			for(Point p : mem)
 				if(p.x == x && p.y == y)
 					die();
@@ -63,11 +69,11 @@ public class Snake implements Keyable {
 
 	public void draw(Graphics g) {
 		for(Point p : mem) {
-			g.setColor(!alive ? Color.red : Utils.generateColor(mem.indexOf(p), 0.03));
+			g.setColor(!alive ? Color.red : Utils.generateColor(mem.size()-mem.indexOf(p), f));
 			g.fillRect((int) ((p.x * Utils.getAGSX())), (int) ((p.y * Utils.getAGSY())), (int) Utils.getAGSX(),
 					(int) Utils.getAGSY());
 		}
-		g.setColor(!alive ? Color.red : Utils.generateColor(mem.size(), 0.03));
+		g.setColor(!alive ? Color.red : Utils.generateColor(0, f));
 		g.fillRect((int) ((x * Utils.getAGSX())), (int) ((y * Utils.getAGSY())), (int) Utils.getAGSX(),
 				(int) Utils.getAGSY());
 	}
@@ -77,31 +83,35 @@ public class Snake implements Keyable {
 
 		int key = e.getKeyCode();
 
-		if (key == KeyEvent.VK_W) {
+		if (key == KeyEvent.VK_W && !moved) {
 			if (dy == 0) {
 				dy = -1;
 				dx = 0;
+				moved = true;
 			}
 
 		}
-		if (key == KeyEvent.VK_A) {
+		if (key == KeyEvent.VK_A && !moved) {
 			if (dx == 0) {
 				dx = -1;
 				dy = 0;
+				moved = true;
 			}
 
 		}
-		if (key == KeyEvent.VK_S) {
+		if (key == KeyEvent.VK_S && !moved) {
 			if (dy == 0) {
 				dy = 1;
 				dx = 0;
+				moved = true;
 			}
 
 		}
-		if (key == KeyEvent.VK_D) {
+		if (key == KeyEvent.VK_D && !moved) {
 			if (dx == 0) {
 				dx = 1;
 				dy = 0;
+				moved = true;
 			}
 
 		}

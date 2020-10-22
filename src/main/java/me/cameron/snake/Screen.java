@@ -17,6 +17,7 @@ import javax.swing.Timer;
 
 import me.cameron.snake.objects.Apple;
 import me.cameron.snake.objects.Snake;
+import me.cameron.snake.objects.SuperApple;
 import me.cameron.snake.objects.Wall;
 import me.cameron.snake.utils.Utils;
 import me.cameron.snake.utils.meta.GameObject;
@@ -36,6 +37,7 @@ public class Screen extends JPanel implements ActionListener {
 	double agsx;
 	double agsy;
 
+	
 	int level = -1;
 
 	public List<GameObject> objects = new ArrayList<>();
@@ -93,8 +95,9 @@ public class Screen extends JPanel implements ActionListener {
 		super.paintComponent(g);
 //		g.setColor(Color.BLACK);
 //		g.fillRect(0, 0, getWidth(), getHeight());
-		agsx = Math.ceil(Main.getWindow().getWidth() / getGridSize() - 1);
-		agsy = Math.ceil(Main.getWindow().getHeight() / getGridSize()) - 1;
+		agsx = Main.getWindow().getWidth() / (getGridSize()+1);
+		agsy = Main.getWindow().getHeight() / (getGridSize()+2);
+		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, (int) (gridSize * agsx), (int) (gridSize * agsy));
 //		for (int i = 0; !(i >= Main.getWindow().getWidth() / agsx); i++) {
@@ -116,8 +119,9 @@ public class Screen extends JPanel implements ActionListener {
 					((Snake) object).update();
 			object.draw(g);
 		}
-		if (lifetime >= new Random().nextInt(50) + 20) {
-			objects.add(new Apple(new Random().nextInt(gridSize - 1), new Random().nextInt(gridSize - 1)));
+		if (lifetime >= new Random().nextInt(10) + 1) {
+			if((new Random().nextBoolean()))objects.add(new Apple(new Random().nextInt(gridSize - 1), new Random().nextInt(gridSize - 1)));
+			else objects.add(new SuperApple(new Random().nextInt(gridSize - 1), new Random().nextInt(gridSize - 1)));
 			lifetime = 0;
 
 		}

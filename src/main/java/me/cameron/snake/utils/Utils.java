@@ -1,6 +1,7 @@
 package me.cameron.snake.utils;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,15 +10,16 @@ import me.cameron.snake.Main;
 import me.cameron.snake.objects.Snake;
 import me.cameron.snake.objects.Wall;
 import me.cameron.snake.utils.meta.GameObject;
+import sun.awt.image.ToolkitImage;
 
 public class Utils {
 
-	public static int getAGSX() {
-		return (int) Main.getWindow().getScreen().getAGSX();
+	public static double getAGSX() {
+		return Main.getWindow().getScreen().getAGSX();
 	}
 
-	public static int getAGSY() {
-		return (int) Main.getWindow().getScreen().getAGSY();
+	public static double getAGSY() {
+		return Main.getWindow().getScreen().getAGSY();
 	}
 
 	public static GameObject getObject(int x, int y) {
@@ -40,22 +42,26 @@ public class Utils {
 	}
 	public static List<GameObject> loadLevel(String level){
 		List<GameObject> objects = new ArrayList<>();
-		BufferedImage img = ImageUtils.toBufferedImage(ImageUtils.getImage("images/" + level + ".png"));
-		Main.getWindow().getScreen().setGridSize(img.getWidth());
-		for(int x=0;x!=img.getWidth();x++) {
-			for(int y=0;y!=img.getHeight();y++) {
-				if(img.getRGB(x, y) == Color.decode("#5B5B5B").getRGB()) {
-					objects.add(new Wall(x,y));
-				}
-			}
-		}
+		Image img = ImageUtils.getImage("images/"+level+".png");
+		BufferedImage b = ((ToolkitImage) img).getBufferedImage();
+//		BufferedImage img = ImageUtils.toBufferedImage(ImageUtils.getImage("images/" + level + ".png"));
+//		Main.getWindow().getScreen().setGridSize(img.getWidth(null));
+		
+//		for(int x=1;x!=b.getWidth();x++) {
+//			for(int y=1;y!=b.getHeight();y++) {
+//				if(b.getRGB(x, y) 
+//						== Color.decode("#5B5B5B").getRGB()) {
+//					objects.add(new Wall(x,y));
+//				}
+//			}
+//		}
 		
 		return objects;
 	}
 
 	public static Color generateColor(int seed, double frequency, double shift) {
 
-		int amp = 100;
+		int amp = 105;
 		if (amp > 127)
 			amp = 127;
 		int peak = 255 - amp;

@@ -6,18 +6,18 @@ import java.awt.Graphics;
 import me.cameron.snake.utils.Utils;
 import me.cameron.snake.utils.meta.Food;
 
-public class Apple implements Food {
+public class SuperApple implements Food {
 
 	int x;
 	int y;
 
-	public Apple(int x, int y) {
+	public SuperApple(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 
 	public void draw(Graphics g) {
-		g.setColor(Color.GREEN);
+		g.setColor(Color.YELLOW);
 		g.fillOval((int) (x * Utils.getAGSX()), (int) (y * Utils.getAGSY()), (int) Utils.getAGSX(),
 				(int) Utils.getAGSY());
 	}
@@ -33,7 +33,7 @@ public class Apple implements Food {
 	@Override
 	public int getPower() {
 		// TODO Auto-generated method stub
-		return 1;
+		return 5;
 	}
 
 	@Override

@@ -19,7 +19,7 @@ public class Wall implements Collider {
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(Color.GRAY);
-		g.fillRect(x * Utils.getAGSX(), y * Utils.getAGSY(), Utils.getAGSX(), Utils.getAGSY());
+		g.fillRect((int)(x * Utils.getAGSX()), (int)(y * Utils.getAGSY()), (int)Utils.getAGSX(), (int)Utils.getAGSY());
 	}
 
 	@Override
