@@ -46,6 +46,8 @@ public class Screen extends JPanel implements ActionListener {
 	int lifetime = 0;
 
 	private boolean paused = false;
+	
+	private boolean food_var = false;
 
 	public Screen() {
 		setBackground(Color.WHITE);
@@ -119,10 +121,18 @@ public class Screen extends JPanel implements ActionListener {
 					((Snake) object).update();
 			object.draw(g);
 		}
+		food_var = false;
 		if (lifetime >= new Random().nextInt(10) + 1) {
-			if((new Random().nextBoolean()))objects.add(new Apple(new Random().nextInt(gridSize - 1), new Random().nextInt(gridSize - 1)));
-			else objects.add(new SuperApple(new Random().nextInt(gridSize - 1), new Random().nextInt(gridSize - 1)));
-			lifetime = 0;
+			while (!food_var) {
+				int x = new Random().nextInt(gridSize - 1), y = new Random().nextInt(gridSize - 1);
+				for (GameObject ob : objects) {
+					if (ob.getX() == x && ob.getY() == y)
+						continue;
+					objects.add(new Random().nextBoolean() ? new Apple(x, y) : new SuperApple(x, y));
+					lifetime = 0;
+					food_var = true;
+				}
+			}
 
 		}
 		lifetime = lifetime + 1;
