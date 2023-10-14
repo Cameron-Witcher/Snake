@@ -55,6 +55,7 @@
 			<plugin>
 				<groupId>com.akathist.maven.plugins.launch4j</groupId>
 				<artifactId>launch4j-maven-plugin</artifactId>
+				<version>1.5.2</version>
 				<executions>
 					<execution>
 						<id>l4j-gui</id>
@@ -74,7 +75,8 @@
 							</classPath>
 							<icon>application.ico</icon>
 							<jre>
-								<minVersion>1.5.0</minVersion>
+								<path>/usr/lib/jvm/java-17-openjdk-amd64/</path>
+								<minVersion>1.8.0</minVersion>
 								<maxVersion>1.8.0</maxVersion>
 								<initialHeapSize>512</initialHeapSize>
 								<maxHeapSize>1024</maxHeapSize>
