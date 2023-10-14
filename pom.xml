@@ -75,7 +75,7 @@
 							</classPath>
 							<icon>application.ico</icon>
 							<jre>
-								<path>/usr/lib/jvm/java-17-openjdk-amd64/</path>
+								<path>/usr/lib/jvm/default-java/</path>
 								<initialHeapSize>512</initialHeapSize>
 								<maxHeapSize>1024</maxHeapSize>
 							</jre>
