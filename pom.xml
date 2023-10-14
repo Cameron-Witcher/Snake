@@ -75,7 +75,9 @@
 							</classPath>
 							<icon>application.ico</icon>
 							<jre>
-								<path>/usr/lib/jvm/default-java/</path>
+								<path>/usr/lib/jvm/java-1.11.0-openjdk-amd64</path>
+								<minVersion>1.7.0</minVersion>
+								<maxVersion>1.8.0</maxVersion>
 								<initialHeapSize>512</initialHeapSize>
 								<maxHeapSize>1024</maxHeapSize>
 							</jre>
