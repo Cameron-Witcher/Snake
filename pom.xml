@@ -76,8 +76,6 @@
 							<icon>application.ico</icon>
 							<jre>
 								<path>/usr/lib/jvm/java-17-openjdk-amd64/</path>
-								<minVersion>1.8.0</minVersion>
-								<maxVersion>1.8.0</maxVersion>
 								<initialHeapSize>512</initialHeapSize>
 								<maxHeapSize>1024</maxHeapSize>
 							</jre>
